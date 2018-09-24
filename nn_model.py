@@ -68,10 +68,6 @@ class nn_model:
 
             s = add([last_input, a])
 
-            # # # TODO: Might not need to hold onto these?
-            # conv_layers.append(c)
-            # sum_layers.append(a)
-
             last_input = s
 
         # final 1x1 convolution to reduce to desired number of image channels
