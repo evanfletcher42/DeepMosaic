@@ -6,6 +6,8 @@ import scipy.misc
 import nn_model
 from create_training_data import create_training_data
 
+import os
+
 # ==================== Hyperparameters ====================
 
 train_data_path = "data/Flickr500"
@@ -39,7 +41,7 @@ tb_cb = keras.callbacks.TensorBoard(log_dir='./logs',
                                     embeddings_data=None)
 
 # Save the model every so often to prevent cardiac arrest.
-ckpt_cb = keras.callbacks.ModelCheckpoint('checkpoints\\weights.{epoch:02d}.hdf5',
+ckpt_cb = keras.callbacks.ModelCheckpoint('checkpoints/weights.{epoch:02d}.hdf5',
                                           # monitor='val_loss',
                                           verbose=0,
                                           save_best_only=False,
