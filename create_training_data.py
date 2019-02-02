@@ -4,10 +4,8 @@ import glob
 from tqdm import tqdm
 
 
-def create_training_data(patch_shape):
+def create_training_data(patch_shape, data_path):
     """Loads and prepares a dataset from stored images on disk."""
-
-    data_path = "./data/Flickr500"
 
     num_patch_centers_per_image = 16
 

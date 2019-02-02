@@ -74,7 +74,8 @@ model = nn_m.setup_model()
 # it finds the best encoding (mosaic function) and decoding (demosaic conv net) to exactly reproduce the input.
 # TODO: Break this assumption by introducing simulated image sensor noise to the dataset.
 
-dataset = create_training_data(nn_m.image_shape)
+dataset = create_training_data(nn_m.image_shape, data_path=train_data_path)
+val_set = create_training_data(nn_m.image_shape, data_path=validation_data_path)
 
 print("Dataset shape: " + str(dataset.shape))
 
@@ -86,7 +87,7 @@ model.compile(optimizer='adam',
 model.fit(dataset, dataset,
           batch_size=batch_size,
           epochs=epochs,
-          validation_split=validation_split,
+          validation_data=[val_set, val_set],
           # callbacks=[tb_cb, ckpt_cb, dm_cb],  # enable this to periodically draw the learned CFA.
           callbacks=[tb_cb, ckpt_cb]
           )
