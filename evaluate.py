@@ -13,6 +13,7 @@ from colour_demosaicing import (
 import nn_model
 
 comparison_data_path = "data/Comparison"
+weights_path = "checkpoints/weights.100-0.00.hdf5"
 
 # =========== Utility ==========
 
@@ -63,7 +64,7 @@ results = np.zeros((len(desc_list), dataset.shape[0], dataset.shape[1], dataset.
 
 model.compile(optimizer='adam',
               loss='mean_squared_error')
-model.load_weights("checkpoints/weights.100-0.00.hdf5")
+model.load_weights(weights_path)
 model.summary()
 results_nn = model.predict(dataset)
 
